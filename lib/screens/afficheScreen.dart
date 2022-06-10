@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Affiche extends StatelessWidget {
+class DisplayScreen extends StatelessWidget {
   final String email;
   final String password;
 
-  const Affiche({Key? key, required this.email, required this.password}) : super(key: key);
+  const DisplayScreen({Key? key, required this.email, required this.password})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +13,18 @@ class Affiche extends StatelessWidget {
       appBar: AppBar(
         title: Text('Affiche des données'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              email
-            ),
-            Text(
-              password,
-            ),
-          ],
+      body:
+         Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Mon email : $email'),
+              Text('Mon email : $password'),
+
+            ],
+          ),
         ),
-      ),
+
     );
   }
 }
-
-
-

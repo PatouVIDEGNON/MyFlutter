@@ -83,7 +83,7 @@ class _InputState extends State<Input> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (BuildContext context) => Affiche(email: emailData, password: passwordData),
+        builder: (BuildContext context) => DisplayScreen(email: emailData, password: passwordData),
       ),
     );
   }
