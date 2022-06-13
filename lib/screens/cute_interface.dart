@@ -14,7 +14,7 @@ class _CuteInterfaceState extends State<CuteInterface> {
   Icon customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('My Personal Journal');
   int _selectedIndex = 0;
-  static List <Widget> _screens =[
+  static final List<Widget> _screens = [
     ListView(
       children: [
         Padding(
@@ -266,7 +266,6 @@ class _CuteInterfaceState extends State<CuteInterface> {
         ),
         Container(
           margin: EdgeInsets.all(10),
-          //constraints: ,
           height: 60,
           decoration: BoxDecoration(
             color: Colors.black12,
@@ -328,13 +327,76 @@ class _CuteInterfaceState extends State<CuteInterface> {
             ),
           ),
         ),
+        Container(
+          margin: EdgeInsets.all(10),
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.black12,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: ListTile(
+            //style: ListTileStyle,
+            //horizontalTitleGap: 80,
+            leading: Container(
+              margin: EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 5.0),
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.black12,
+              ),
+              child: IconButton(
+                padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                iconSize: 20,
+                splashRadius: 20,
+                onPressed: () {},
+                icon: Icon(
+                  Icons.person,
+                  size: 35,
+                  color: Colors.red,
+                ),
+              ),
+            ),
+            title: Center(
+              child: Column(
+                children: [
+                  Text(
+                    'Suleiman Kelany',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    'FullStack Developper',
+                    style: TextStyle(color: Colors.black45, fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+            trailing: Column(
+              children: [
+                Text('Payer'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  '9000fcfa',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     ),
-    Icon(
+    const Icon(
       Icons.camera,
       size: 150,
     ),
-    Icon(
+    const Icon(
       Icons.chat,
       size: 150,
     ),
@@ -370,9 +432,16 @@ class _CuteInterfaceState extends State<CuteInterface> {
           )
         ],
       ),
-      body: Center(child: _screens.elementAt(_selectedIndex),),
+      body: Center(
+        //IndexedStack permet de preserver l'etat de l'ecran d'affichage.
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: _screens,
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting, // highlight the selected item.
+        type: BottomNavigationBarType.shifting,
+        // highlight the selected item.
         unselectedItemColor: Colors.black45,
         selectedFontSize: 20,
         selectedIconTheme: IconThemeData(color: Colors.lightBlue),
@@ -399,34 +468,12 @@ class _CuteInterfaceState extends State<CuteInterface> {
         ],
       ),
     );
-
   }
 
   void _onItemTapped(int value) {
-    setState( (){
+    setState(() {
       _selectedIndex = value;
     });
   }
 }
 
-/*
-Container(
-padding: EdgeInsets.all(5),
-height: 50,
-width: 50,
-decoration: BoxDecoration( ,
-borderRadius: BorderRadius.circular(12),
-color: Colors.black12,
-color: Colors.red,
-),
-child: IconButton(
-onPressed: () {},
-icon: Icon(
-Icons.person,
-),
-color: Colors.red,
-iconSize: 20,
-splashRadius: 20,
-splashColor: Colors.black45,
-),
-),*/
